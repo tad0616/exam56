@@ -14,7 +14,7 @@
                                 ->selectedOption(1)
                                 ->inline())
                     ->showAsRow() }}
-
+        {{ bs()->hidden('user_id', Auth::id()) }}
             {{ bs()->formGroup()
                     ->label('')
                     ->control(bs()->submit('建立測驗'))
