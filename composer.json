@@ -12,7 +12,8 @@
         "caouecs/laravel-lang": "~3.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "marvinlabs/laravel-html-bootstrap-4": "^1.6"
     },
     "require-dev": {
         "backpack/generators": "^1.2",
