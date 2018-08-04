@@ -84,6 +84,5 @@ class TopicController extends Controller
     public function destroy(Topic $topic)
     {
         $topic->delete();
-        return redirect()->route('exam.show', $topic->exam_id);
     }
 }
