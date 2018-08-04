@@ -9,5 +9,6 @@
     "Confirm Password": "確認密碼",
     "Register": "註冊",
     "Name": "姓名",
-    "Logout": "登出"
+    "Logout": "登出",
+    "Admin":"後台管理"
 }
