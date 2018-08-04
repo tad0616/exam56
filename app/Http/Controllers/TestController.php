@@ -58,9 +58,18 @@ class TestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Test $test)
     {
-        //
+        $topics  = json_decode($test->content, true);
+        $content = [];
+        $i       = 0;
+        foreach ($topics as $topic_id => $ans) {
+            $content[$i]['topic'] = Topic::find($topic_id);
+            $content[$i]['ans']   = $ans;
+            $i++;
+
+        }
+        return view('exam.test', compact('test', 'content'));
     }
 
     /**
