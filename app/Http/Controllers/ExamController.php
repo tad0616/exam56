@@ -50,7 +50,8 @@ class ExamController extends Controller
      */
     public function show($id)
     {
-        //
+        $exam = Exam::find($id);
+        return view('exam.show', compact('exam'));
     }
 
     /**
