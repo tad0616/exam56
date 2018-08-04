@@ -2,7 +2,11 @@
 @section('content')
     <h1>{{ __('Create Exam') }}</h1>
     @can('建立測驗')
-        {{ bs()->openForm('post', '/exam') }}
+        @if(isset($exam))
+            {{ bs()->openForm('patch', "/exam/{$exam->id}" , [ 'model' => $exam]) }}
+        @else
+            {{ bs()->openForm('post', '/exam') }}
+        @endif
             {{ bs()->formGroup()
                     ->label('測驗標題', false, 'text-sm-right')
                     ->control(bs()->text('title')->placeholder('請填入測驗標題'))
@@ -11,10 +15,10 @@
             {{ bs()->formGroup()
                     ->label('測驗狀態', false, 'text-sm-right')
                     ->control(bs()->radioGroup('enable', [1 => '啟用', 0 => '關閉'])
-                                ->selectedOption(1)
+                                ->selectedOption(isset($exam)?$exam->enable:1)
                                 ->inline())
                     ->showAsRow() }}
-        {{ bs()->hidden('user_id', Auth::id()) }}
+            {{ bs()->hidden('user_id', Auth::id()) }}
             {{ bs()->formGroup()
                     ->label('')
                     ->control(bs()->submit('建立測驗'))

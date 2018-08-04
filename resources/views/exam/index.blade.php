@@ -4,6 +4,9 @@
     <ul class="list-group">
         @forelse($exams as $exam)
             <li class="list-group-item">
+                @if($exam->enable!=1)
+                    {{ bs()->badge()->text('關閉') }}
+                @endif
                 {{ $exam->created_at->format("Y年m月d日") }} -
                 <a href="exam/{{ $exam->id }}">
                     {{ $exam->title }}
