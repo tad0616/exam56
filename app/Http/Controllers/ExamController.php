@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use App\Http\Requests\ExamRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -78,9 +79,10 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ExamRequest $request, $id)
+    public function update(ExamRequest $request, Exam $exam)
     {
-        //
+        $exam->update($request->all());
+        return redirect()->route('exam.show', $exam->id);
     }
 
     /**
