@@ -13,9 +13,14 @@ class Exam extends Model
     protected $casts = [
         'enable' => 'boolean',
     ];
-    
+
     public function topics()
     {
         return $this->hasMany('App\Topic');
+    }
+    
+    public function tests()
+    {
+        return $this->hasMany('App\Test');
     }
 }
