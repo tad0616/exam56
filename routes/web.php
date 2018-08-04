@@ -11,15 +11,9 @@
 |
  */
 
-Route::get('/', function () {
-    $name = 'tad';
-    $say  = '嗨！';
-    return view('welcome', compact('name', 'say'));
-});
-
+Route::get('/', 'ExamController@index')->name('index');
+Route::get('/home', 'ExamController@index')->name('home.index');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/exam', 'ExamController@index')->name('exam.index');
 Route::get('/exam/create', 'ExamController@create')->name('exam.create');
