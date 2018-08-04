@@ -81,8 +81,9 @@ class TopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Topic $topic)
     {
-        //
+        $topic->delete();
+        return redirect()->route('exam.show', $topic->exam_id);
     }
 }

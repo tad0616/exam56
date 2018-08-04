@@ -50,7 +50,12 @@
         @forelse ($exam->topics as $key => $topic)
             <dt>
                 <h3>
-                @can('建立測驗')
+                @can('建立測驗')                
+                    <form action="{{route('topic.destroy', $topic->id)}}"  method="post" style="display:inline">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">刪除</button>
+                    </form>
                     <a href="{{route('topic.edit', $topic->id)}}" class="btn btn-warning">編輯</a>
                     （{{$topic->ans}}）
                 @endcan
