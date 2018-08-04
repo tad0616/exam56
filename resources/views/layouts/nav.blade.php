@@ -24,6 +24,9 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @else
+                    @section('my_menu')
+                        <li><a class="nav-link" href="/home">{{ __('Home') }}</a></li>
+                    @show
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
