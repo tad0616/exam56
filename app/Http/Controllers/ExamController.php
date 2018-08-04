@@ -16,8 +16,7 @@ class ExamController extends Controller
     {
         $exams = Exam::where('enable', 1)
             ->orderBy('created_at', 'desc')
-            ->take(10)
-            ->get();
+            ->paginate(2);
         return view('exam.index', compact('exams'));
     }
 
