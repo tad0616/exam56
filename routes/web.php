@@ -19,33 +19,6 @@ Route::get('/', 'ExamController@index')->name('index');
 Route::get('/home', 'ExamController@index')->name('home.index');
 Auth::routes();
 
-Route::group([
-    'prefix' => 'exam',
-    'as'     => 'exam.',
-], function () {
-    Route::get('/', 'ExamController@index')->name('index');
-    Route::get('/create', 'ExamController@create')->name('create');
-    Route::post('', 'ExamController@store')->name('store');
-    Route::get('/{exam}', 'ExamController@show')->name('show');
-    Route::delete('/{exam}', 'ExamController@destroy')->name('destroy');
-    Route::get('/{exam}/edit', 'ExamController@edit')->name('edit');
-    Route::patch('/{exam}', 'ExamController@update')->name('update');
-});
-
-Route::group([
-    'prefix' => 'topic',
-    'as'     => 'topic.',
-], function () {
-    Route::post('/', 'TopicController@store')->name('store');
-    Route::get('/{topic}/edit', 'TopicController@edit')->name('edit');
-    Route::patch('/{topic}', 'TopicController@update')->name('update');
-    Route::delete('/{topic}', 'TopicController@destroy')->name('destroy');
-});
-
-Route::group([
-    'prefix' => 'test',
-    'as'     => 'test.',
-], function () {
-    Route::post('/', 'TestController@store')->name('store');
-    Route::get('/{test}', 'TestController@show')->name('show');
-});
+Route::resource('exam', 'ExamController');
+Route::resource('topic', 'TopicController');
+Route::resource('test', 'TestController');
