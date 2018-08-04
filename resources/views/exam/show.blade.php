@@ -52,13 +52,13 @@
                         2=>"<span class='opt'>&#10103; $topic->opt2</span>",
                         3=>"<span class='opt'>&#10104; $topic->opt3</span>",
                         4=>"<span class='opt'>&#10105; $topic->opt4</span>"
-                    ])->inline()->addRadioClass(['mx-3']) }}
+                    ])->addRadioClass(['mx-3']) }}
             </dd>
         @empty
             <div class="alert alert-danger">尚無任何題目</div>
         @endforelse
     </dl>
-    
+
     <div class="text-center">
         發佈於 {{$exam->created_at->format("Y年m月d日 H:i:s")}} / 最後更新： {{$exam->updated_at->format("Y年m月d日 H:i:s")}}
     </div>
