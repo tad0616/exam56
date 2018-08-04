@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use App\Topic;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -50,7 +51,8 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        return view('exam.show', compact('exam'));
+        $topics = Topic::where('exam_id', $exam->id)->get();
+        return view('exam.show', compact('exam', 'topics'));
     }
 
     /**
