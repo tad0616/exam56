@@ -19,18 +19,33 @@ Route::get('/', 'ExamController@index')->name('index');
 Route::get('/home', 'ExamController@index')->name('home.index');
 Auth::routes();
 
-Route::get('/exam', 'ExamController@index')->name('exam.index');
-Route::get('/exam/create', 'ExamController@create')->name('exam.create');
-Route::post('/exam', 'ExamController@store')->name('exam.store');
-Route::get('/exam/{exam}', 'ExamController@show')->name('exam.show');
-Route::get('/exam/{exam}/edit', 'ExamController@edit')->name('exam.edit');
-Route::patch('/exam/{exam}', 'ExamController@update')->name('exam.update');
-Route::delete('/exam/{exam}', 'ExamController@destroy')->name('exam.destroy');
+Route::group([
+    'prefix' => 'exam',
+    'as'     => 'exam.',
+], function () {
+    Route::get('/', 'ExamController@index')->name('index');
+    Route::get('/create', 'ExamController@create')->name('create');
+    Route::post('', 'ExamController@store')->name('store');
+    Route::get('/{exam}', 'ExamController@show')->name('show');
+    Route::delete('/{exam}', 'ExamController@destroy')->name('destroy');
+    Route::get('/{exam}/edit', 'ExamController@edit')->name('edit');
+    Route::patch('/{exam}', 'ExamController@update')->name('update');
+});
 
-Route::post('/topic', 'TopicController@store')->name('topic.store');
-Route::get('/topic/{topic}/edit', 'TopicController@edit')->name('topic.edit');
-Route::patch('/topic/{topic}', 'TopicController@update')->name('topic.update');
-Route::delete('/topic/{topic}', 'TopicController@destroy')->name('topic.destroy');
+Route::group([
+    'prefix' => 'topic',
+    'as'     => 'topic.',
+], function () {
+    Route::post('/', 'TopicController@store')->name('store');
+    Route::get('/{topic}/edit', 'TopicController@edit')->name('edit');
+    Route::patch('/{topic}', 'TopicController@update')->name('update');
+    Route::delete('/{topic}', 'TopicController@destroy')->name('destroy');
+});
 
-Route::post('/test', 'TestController@store')->name('test.store');
-Route::get('/test/{test}', 'TestController@show')->name('test.show');
+Route::group([
+    'prefix' => 'test',
+    'as'     => 'test.',
+], function () {
+    Route::post('/', 'TestController@store')->name('store');
+    Route::get('/{test}', 'TestController@show')->name('show');
+});
