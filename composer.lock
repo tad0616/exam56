@@ -64,7 +64,7 @@
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^5.5",
+                "laravel/framework": "6.20.26",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -336,7 +336,7 @@
                 "league/flysystem": "^1.0",
                 "league/flysystem-cached-adapter": "^1.0",
                 "php": ">=5.4",
-                "studio-42/elfinder": "^2.1.10"
+                "studio-42/elfinder": "2.1.58"
             },
             "suggest": {
                 "league/glide": "1.x to display images through Glide"
